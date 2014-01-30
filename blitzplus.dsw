@@ -1,0 +1,965 @@
+Microsoft Developer Studio Workspace File, Format Version 6.00
+# WARNING: DO NOT EDIT OR DELETE THIS WORKSPACE FILE!
+
+###############################################################################
+
+Project: "app"=.\app\app.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "audio"=.\audio\audio.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "bank"=.\bank\bank.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "blitz2d"=.\blitz2d\blitz2d.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "blitzcc"=.\blitzcc\blitzcc.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "blitzplus"=.\blitzplus\blitzplus.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name app
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name bank
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name filesys
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name math
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name module
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name object
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name stream
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name string
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name time
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name event
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name font
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name win32event
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name win32font
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name win32gui
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name win32hwnd
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name graphics
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name screen
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name win32dd
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name win32ddscreen
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name blitz2d
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name canvas
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name win32ddcanvas
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name process
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name timer
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name win32timer
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name tcpip
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name win32dpnetgame
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name joystick
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name movie
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name win32dsmovie
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name debug
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name win32canvas
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name grdriver
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name grdriver2d
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name win32ddgrdriver2d
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name win32dib
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name win32gl
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name win32glgrdriver2d
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name win32glscreen
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name win32glcanvas
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name win32screen
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name opengl
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name rsource
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name win32gdi
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name win32gdicanvas
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name win32gdigrdriver2d
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name win32gdiscreen
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name gui
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name audio
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "canvas"=.\canvas\canvas.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "debug"=.\debug\debug.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "debugger"=.\debugger\debugger.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "event"=.\event\event.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "filesys"=.\filesys\filesys.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "font"=.\font\font.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "graphics"=.\graphics\graphics.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "grdriver"=.\grdriver\grdriver.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "grdriver2d"=.\grdriver2d\grdriver2d.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "gui"=.\gui\gui.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "ide"=.\ide\ide.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "joystick"=.\joystick\joystick.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "linker"=.\linker\linker.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "maplet"=.\maplet\maplet.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name app
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name canvas
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name debug
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name event
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name filesys
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name font
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name graphics
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name grdriver
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name grdriver2d
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name gui
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name joystick
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name math
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name module
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name movie
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name object
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name opengl
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name process
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name rsource
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name screen
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name stream
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name string
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name tcpip
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name time
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name timer
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name win32canvas
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name win32dd
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name win32ddcanvas
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name win32ddgrdriver2d
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name win32ddscreen
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name win32dib
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name win32dpnetgame
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name win32dsmovie
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name win32event
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name win32font
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name win32gdi
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name win32gdicanvas
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name win32gdigrdriver2d
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name win32gdiscreen
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name win32gl
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name win32glcanvas
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name win32glgrdriver2d
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name win32glscreen
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name win32gui
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name win32hwnd
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name win32screen
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name win32timer
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name audio
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "math"=.\math\math.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "module"=.\module\module.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "movie"=.\movie\movie.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "object"=.\object\object.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "opengl"=.\opengl\opengl.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "process"=.\process\process.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "rsource"=.\rsource\rsource.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "screen"=.\screen\screen.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "stream"=.\stream\stream.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "string"=.\string\string.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "tcpip"=.\tcpip\tcpip.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "time"=.\time\time.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "timer"=.\timer\timer.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "win32canvas"=.\win32canvas\win32canvas.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "win32dd"=.\win32dd\win32dd.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "win32ddcanvas"=.\win32ddcanvas\win32ddcanvas.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "win32ddgrdriver2d"=.\win32ddgrdriver2d\win32ddgrdriver2d.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "win32ddscreen"=.\win32ddscreen\win32ddscreen.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "win32dib"=.\win32dib\win32dib.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "win32dpnetgame"=.\win32dpnetgame\win32dpnetgame.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "win32dsmovie"=.\win32dsmovie\win32dsmovie.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "win32event"=.\win32event\win32event.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "win32font"=.\win32font\win32font.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "win32gdi"=.\win32gdi\win32gdi.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "win32gdicanvas"=.\win32gdicanvas\win32gdicanvas.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "win32gdigrdriver2d"=.\win32gdigrdriver2d\win32gdigrdriver2d.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "win32gdiscreen"=.\win32gdiscreen\win32gdiscreen.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "win32gl"=.\win32gl\win32gl.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "win32glcanvas"=.\win32glcanvas\win32glcanvas.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "win32glgrdriver2d"=.\win32glgrdriver2d\win32glgrdriver2d.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "win32glscreen"=.\win32glscreen\win32glscreen.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "win32gui"=.\win32gui\win32gui.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "win32hwnd"=.\win32hwnd\win32hwnd.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "win32screen"=.\win32screen\win32screen.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "win32timer"=.\win32timer\win32timer.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Global:
+
+Package=<5>
+{{{
+}}}
+
+Package=<3>
+{{{
+}}}
+
+###############################################################################
+
