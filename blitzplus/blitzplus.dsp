@@ -82,7 +82,7 @@ BSC32=bscmake.exe
 # ADD BSC32 /nologo
 LINK32=link.exe
 # ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /dll /debug /machine:I386 /pdbtype:sept
-# ADD LINK32 amstrmid.lib dxguid.lib opengl32.lib wsock32.lib comctl32.lib winmm.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /dll /pdb:none /machine:I386 /force /out:"../../release/blitzplusrelease/bin/runtime_dbg.dll"
+# ADD LINK32 amstrmid.lib dxguid.lib opengl32.lib wsock32.lib comctl32.lib winmm.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /dll /pdb:none /machine:I386 /force /out:"../_release/bin/runtime_dbg.dll"
 # SUBTRACT LINK32 /map /debug
 
 !ENDIF 
@@ -158,7 +158,7 @@ SOURCE=..\..\FreeImage241\Source\FreeImageLib\Release\FreeImage.lib
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\fmodsrc375win\win\Final\fmodstatic.lib
+SOURCE=..\..\fmod375\fmodstatic.lib
 # End Source File
 # End Target
 # End Project

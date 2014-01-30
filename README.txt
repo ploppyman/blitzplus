@@ -1,14 +1,11 @@
 MSVC 6.0 required!
 
-Build following projects in 'release' config:
+1) Install freeimage241 and fmod375 into same dir as blitzplus.
 
-blitzcc
-blitzplus
-debugger
-ide
-linker
+2) Build FreeImageLib project in release config.
 
-Build 'blitzplus' in debug too...
+3) Build blitzcc, blitzplus, debugger, ide, linker projects in release config.
 
-Output files in ../release/BlitzPlusRelease/bin
+4) Build blitzplus project again in debug config.
 
+5) Output files in blitzplus/_release/bin dir.
