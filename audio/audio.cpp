@@ -1,7 +1,8 @@
 
 #include "audio.h"
 
-#include "../../fmod375/fmod.h"
+//#include "../../fmod375/fmod.h"
+#include "../../fmodapi375win/api/inc/fmod.h"
 
 #pragma warning(disable:4786)
 
