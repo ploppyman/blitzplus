@@ -47,6 +47,21 @@ Package=<5>
 
 Package=<4>
 {{{
+    Begin Project Dependency
+    Project_Dep_Name blitzcc
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name blitzplus
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name debugger
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name ide
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name linker
+    End Project Dependency
 }}}
 
 ###############################################################################
@@ -535,6 +550,18 @@ Package=<4>
 ###############################################################################
 
 Project: "timer"=.\timer\timer.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "visual"=.\visual\visual.dsp - Package Owner=<4>
 
 Package=<5>
 {{{
