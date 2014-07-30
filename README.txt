@@ -1,4 +1,4 @@
-BlitzPlus source release!
+BlitzPlus open source release!
 
 Workspace and project files are in MSVC 6.0 format.
 
@@ -10,17 +10,17 @@ Steps to build:
 
 1) Install freeimage241 into same dir as blitzplus: http://monkeycoder.co.nz/downloads/freeimage241.zip
 
-2) Install fmodapi375 into same dir as blitzplus: http://www.fmod.org/files/public/fmodapi375win.zip
+2) Install fmodapi375win into same dir as blitzplus: http://www.fmod.org/files/public/fmodapi375win.zip
 
 3) Open blitzplus workspace in MSVC 6.0.
  
-4) Build 'bblaunch', 'blitzcc', 'blitzplus', 'debugger', 'ide' and 'linker' projects in 'Win32 Release' config.
+4) Build project 'bblaunch' using config 'Win32 Release'.
 
-5) Build 'blitzplus' project in 'Win32 Debug' config.
+5) Build project 'blitzplus' using config 'Win32 Debug'.
 
-6) Output files should end up in blitzplus/_release dir.
+6) Output files should end up in _release subdir.
 
-7) Also copy fmodapi375win/api/fmod.dll to blitzplus/_release/bin.
+7) Also copy fmodapi375win/api/fmod.dll to _release/bin.
 
 8) Done?
 
