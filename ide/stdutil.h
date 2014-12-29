@@ -6,9 +6,9 @@
 
 #include "config.h"
 
-#ifdef DEMO
-#include "shareprot.h"
-#endif
+//#ifdef DEMO
+//#include "shareprot.h"
+//#endif
 
 #include <string>
 #include <iostream>

@@ -80,7 +80,7 @@ void bbLogf( const char *msg,... ){
 
 	va_list args;
 	va_start( args,msg );
-	vsprintf( buff,msg,args );
+	vsprintf_s( buff,msg,args );
 
 	bbDebugger->debugLog( buff );
 }
@@ -91,7 +91,7 @@ void bbError( const char *err,... ){
 
 	va_list args;
 	va_start( args,err );
-	vsprintf( buff,err,args );
+	vsprintf_s( buff,err,args );
 
 	bbDebugger->debugStop();
 	bbDebugger->debugMsg( buff,true );

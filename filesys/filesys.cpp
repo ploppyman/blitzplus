@@ -13,7 +13,9 @@ BBFile::BBFile( BBString *file,int mode ):_file(0){
 	default:bbError( "Illegal file mode" );
 	}
 
-	_file=fopen( file->c_str(),md );
+	//_file=fopen( file->c_str(),md );
+	errno_t err = fopen_s(&_file, file->c_str(), md);
+
 }
 
 BBFile::~BBFile(){
@@ -51,17 +53,29 @@ int BBFile::seek( int pos ){
 }
 
 BBFile *bbOpenFile( BBString *file ){
-	FILE *f=fopen( file->c_str(),"r+b" );
+	//FILE *f=fopen( file->c_str(),"r+b" );
+
+	FILE *f=NULL;
+	errno_t err = fopen_s(&f, file->c_str(), "r+b");
+
 	return f ? new BBFile(f) : 0;
 }
 
 BBFile *bbReadFile( BBString *file ){
-	FILE *f=fopen( file->c_str(),"rb" );
+	//FILE *f=fopen( file->c_str(),"rb" );
+
+	FILE *f=NULL;
+	fopen_s(&f, file->c_str(), "rb");
+
 	return f ? new BBFile(f) : 0;
 }
 
 BBFile *bbWriteFile( BBString *file ){
-	FILE *f=fopen( file->c_str(),"wb" );
+	//FILE *f=fopen( file->c_str(),"wb" );
+
+	FILE *f = NULL;
+	fopen_s(&f, file->c_str(), "wb");
+
 	return f ? new BBFile(f) : 0;
 }
 

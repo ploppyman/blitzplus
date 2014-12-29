@@ -18,8 +18,12 @@ static bool init_console(){
 		BBString *t=bbAppTitle();
 		SetConsoleTitle( t->c_str() );
 		t->release();
-		con_in=fopen( "CONIN$","r" );
-		con_out=fopen( "CONOUT$","w" );
+		//con_in=fopen( "CONIN$","r" );
+		fopen_s(&con_in, "CONIN$", "r");
+
+		//con_out=fopen( "CONOUT$","w" );
+		fopen_s(&con_out, "CONOUT$", "w");
+
 		return true;
 	}
 	return false;
@@ -86,9 +90,9 @@ BBString* bbSystemProperty( BBString *opt ){
 
 	const char *p=opt->c_str();
 
-	if( !stricmp(p,"cpu") ){
+	if( !_stricmp(p,"cpu") ){
 		return new BBString( "Intel" );
-	}else if( !stricmp(p,"os") ){
+	}else if( !_stricmp(p,"os") ){
 		OSVERSIONINFO os={sizeof(os)};
 		if( GetVersionEx( &os ) ){
 			switch( os.dwMajorVersion ){
@@ -112,16 +116,16 @@ BBString* bbSystemProperty( BBString *opt ){
 				break;
 			}
 		}
-	}else if( !stricmp(p,"appdir") ){
+	}else if( !_stricmp(p,"appdir") ){
 		if( GetModuleFileName( 0,buff,MAX_PATH ) ){
 			if( char *t=strrchr(buff,'\\') ) t[1]=0;
 			return new BBString( buff );
 		}
-	}else if( !stricmp(p,"windowsdir") ){
+	}else if( !_stricmp(p,"windowsdir") ){
 		if( GetWindowsDirectory( buff,MAX_PATH ) ) return toDir(buff);
-	}else if( !stricmp(p,"systemdir") ){
+	}else if( !_stricmp(p,"systemdir") ){
 		if( GetSystemDirectory( buff,MAX_PATH ) ) return toDir(buff);
-	}else if( !stricmp(p,"tempdir") ){
+	}else if( !_stricmp(p,"tempdir") ){
 		if( GetTempPath( MAX_PATH,buff ) ) return toDir(buff);
 	}
 	return BBString::null();
@@ -133,7 +137,7 @@ void _cdecl bbAbortf( const char *msg,... ){
 
 	va_list args;
 	va_start( args,msg );
-	vsprintf( buff,msg,args );
+	vsprintf_s( buff,msg,args );
 
 	MessageBox( GetActiveWindow(),buff,"***** INTERNAL ERROR *****",MB_OK|MB_TOPMOST|MB_SETFOREGROUND );
 

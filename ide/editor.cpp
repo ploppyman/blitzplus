@@ -5,7 +5,11 @@
 
 static bool locked;
 
+#ifdef DEMO
+static const int TEXTLIMIT=16384;
+#else
 static const int TEXTLIMIT=1024*1024-1;
+#endif
 
 static const UINT wm_Find=RegisterWindowMessage( FINDMSGSTRING );
 
@@ -200,6 +204,7 @@ int Editor::OnCreate( LPCREATESTRUCT cs ){
 	editCtrl.SetDefaultCharFormat( fmt );
 	editCtrl.SetEventMask( ENM_CHANGE|ENM_PROTECTED|ENM_KEYEVENTS|ENM_MOUSEEVENTS|ENM_SELCHANGE );
 	editCtrl.SetParaFormat( pf );
+	
 	editCtrl.LimitText( TEXTLIMIT );
 	if( editCtrl.GetLimitText()!=TEXTLIMIT ) AfxMessageBox( "Unable to set editor text Limit" );
 	editCtrl.SetModify(false);
@@ -255,7 +260,7 @@ bool Editor::setText( istream &in ){
 	es.dwCookie=(DWORD)this;
 	es.dwError=0;
 	es.pfnCallback=streamIn;
-	is_line="{{\\colortbl;"+rtfbgr(prefs.rgb_string)+rtfbgr(prefs.rgb_ident)+
+	is_line="{\\rtf{\\colortbl;"+rtfbgr(prefs.rgb_string)+rtfbgr(prefs.rgb_ident)+
 	rtfbgr(prefs.rgb_keyword)+rtfbgr(prefs.rgb_comment)+rtfbgr(prefs.rgb_digit)+
 	rtfbgr(prefs.rgb_default)+"}";
 	int tabTwips=1440*8/GetDeviceCaps( ::GetDC(0),LOGPIXELSX ) * prefs.edit_tabs;
@@ -347,7 +352,9 @@ void Editor::print(){
 	fr.rc.bottom=fr.rcPage.bottom-MARG;
 
 	char buff[MAX_PATH];
-	strcpy( buff,name.c_str() );
+	//strcpy( buff,name.c_str() );
+
+	strcpy_s(buff, MAX_PATH, name.c_str());
 
 	DOCINFO di={sizeof(di)};
 	di.lpszDocName=buff;
@@ -432,8 +439,16 @@ void Editor::hilight( int pos ){
 	int end=pos,len=editCtrl.GetTextLength();
 	while( end<len ){
 		char temp[8];
+		memset(&temp, 0, 8);
 		editCtrl.SetSel( end,end+1 );
-		editCtrl.GetSelText( temp );
+
+
+		CString tmp = editCtrl.GetSelText();
+		strcpy_s(temp, 8, tmp.GetString());
+
+
+
+		//editCtrl.GetSelText( temp );
 		if( temp[0]=='\"' ) quote=!quote;
 		if( !quote && (temp[0]==':' || !isprint( temp[0] )) ) break;
 		++end;
@@ -459,13 +474,13 @@ string Editor::getKeyword(){
 	getSel();
 	int ln=editCtrl.LineFromChar(selStart);
 	int pos=selStart-editCtrl.LineIndex( ln );
-	string line=getLine( ln );if( pos>line.size() ) return "";
+	string line=getLine( ln );if( pos>(int)line.size() ) return "";
 
 	//ok, scan back until we have an isapha char preceded by a nonalnum/non '_' char
 	for(;;){
 		while( pos>0 && ( !isalpha(line[pos]) || isid(line[pos-1]) ) ) --pos;
 		if( !isalpha(line[pos]) ) return "";
-		int end=pos;while( end<line.size() && isid(line[end]) ) ++end;
+		int end=pos;while( end<(int)line.size() && isid(line[end]) ) ++end;
 		string t=line.substr( pos,end-pos );
 		if( keyWordSet.find( t )!=keyWordSet.end() ) return t;
 		if( !pos ) return "";
@@ -496,7 +511,7 @@ void Editor::getCursor( int *row,int *col ){
 void Editor::addKeyword( const string &s ){
 	keyWordSet.insert( s );
 	string t=s;
-	for( int k=0;k<t.size();++k ) t[k]=tolower(t[k]);
+	for( int k=0;k<(int)t.size();++k ) t[k]=tolower(t[k]);
 	keyWordMap[t]=s;
 }
 
@@ -514,8 +529,14 @@ LRESULT Editor::onFind( WPARAM w,LPARAM l ){
 	findFlags=0;
 	if( finder->MatchCase() ) findFlags|=FR_MATCHCASE;
 	if( finder->MatchWholeWord() ) findFlags|=FR_WHOLEWORD;
-	strcpy( findBuff,finder->GetFindString() );
-	strcpy( replaceBuff,finder->GetReplaceString() );
+	//strcpy( findBuff,finder->GetFindString() );
+
+
+	strcpy_s(findBuff, 256, finder->GetFindString());
+
+	//strcpy( replaceBuff,finder->GetReplaceString() );
+
+	strcpy_s(replaceBuff, 256, finder->GetReplaceString());
 
 	if( finder->FindNext() ){
 		found=findNext( true );
@@ -532,7 +553,7 @@ LRESULT Editor::onFind( WPARAM w,LPARAM l ){
 			++cnt;
 		}
 		endFind();
-		char buff[32];itoa( cnt,buff,10 );
+		char buff[32];_itoa_s( cnt,buff,10 );
 		string s( buff );s+=" occurances replaced";
 		MessageBox( s.c_str(),"Replace All Done" );
 		editCtrl.HideSelection( false,false );
@@ -627,7 +648,13 @@ void Editor::en_msgfilter( NMHDR *nmhdr,LRESULT *result ){
 				char buff[4];
 				for( int line=lineStart;line<lineEnd;++line ){
 					int n=editCtrl.LineIndex( line );
-					editCtrl.SetSel( n,n+1 );editCtrl.GetSelText( buff );
+					editCtrl.SetSel( n,n+1 );
+					
+					CString tmp = editCtrl.GetSelText();
+					strcpy_s(buff, 4, tmp.GetString());
+
+					
+					//editCtrl.GetSelText( buff );
 					if( buff[0]=='\t' ) editCtrl.ReplaceSel( "",true );
 				}
 			}else{
@@ -645,7 +672,7 @@ void Editor::en_msgfilter( NMHDR *nmhdr,LRESULT *result ){
 			int k;
 			int ln=editCtrl.LineFromChar( selStart );
 			int pos=selStart-editCtrl.LineIndex( ln );
-			string line=getLine( ln );if( pos>line.size() ) return;
+			string line=getLine( ln );if( pos>(int)line.size() ) return;
 			for( k=0;k<pos && line[k]=='\t';++k ){}
 			line="\r\n"+line.substr( 0,k )+'\0';
 			editCtrl.ReplaceSel( line.data(),true );
@@ -713,7 +740,12 @@ void Editor::setFormat( int from,int to,int color,const string &s ){
 	editCtrl.SetSel( from,to );
 	if( s.size() ){
 		char buff[256];
-		editCtrl.GetSelText( buff );buff[to-from]=0;
+		//editCtrl.GetSelText( buff );
+		
+		CString tmp = editCtrl.GetSelText();
+		strcpy_s(buff, 256, tmp.GetString());
+		
+		buff[to-from]=0;
 		if( string(buff)!=s ){
 			editCtrl.ReplaceSel( s.c_str() );
 			editCtrl.SetSel( from,to );
@@ -732,7 +764,7 @@ void Editor::setFormat( int from,int to,int color,const string &s ){
 void Editor::formatStreamLine(){
 	string out;
 	char cf='0';
-	for( int k=0;k<is_line.size(); ){
+	for( int k=0;k<(int)is_line.size(); ){
 		int from=k;
 		char pf=cf;
 		int c=is_line[k],is_sz=is_line.size();
@@ -765,28 +797,28 @@ void Editor::formatStreamLine(){
 		out+=is_line.substr( from,k-from );
 	}
 	if( is_line[0]=='F' && is_line.find( "Function" )==0 ){
-		for( int k=8;k<is_line.size();++k ){
+		for( int k=8;k<(int)is_line.size();++k ){
 			if( isalpha( is_line[k] ) ){
 				int start=k;
-				for( ++k;k<is_line.size() && isid(is_line[k]);++k ){}
+				for( ++k;k<(int)is_line.size() && isid(is_line[k]);++k ){}
 				funcList.insert( is_linenum,is_line.substr( start,k-start ) );
 				break;
 			}
 		}
 	}else if( is_line[0]=='T' && is_line.find( "Type" )==0 ){
-		for( int k=4;k<is_line.size();++k ){
+		for( int k=4;k<(int)is_line.size();++k ){
 			if( isalpha( is_line[k] ) ){
 				int start=k;
-				for( ++k;k<is_line.size() && isid(is_line[k]);++k ){}
+				for( ++k;k<(int)is_line.size() && isid(is_line[k]);++k ){}
 				typeList.insert( is_linenum,is_line.substr( start,k-start ) );
 				break;
 			}
 		}
 	}else if( is_line[0]=='.' ){
-		for( int k=1;k<is_line.size();++k ){
+		for( int k=1;k<(int)is_line.size();++k ){
 			if( isalpha( is_line[k] ) ){
 				int start=k;
-				for( ++k;k<is_line.size() && isid(is_line[k]);++k ){}
+				for( ++k;k<(int)is_line.size() && isid(is_line[k]);++k ){}
 				labsList.insert( is_linenum,is_line.substr( start,k-start ) );
 				break;
 			}
@@ -815,7 +847,7 @@ void Editor::formatLine( int ln ){
 
 	int *cf=0;
 	string rep;
-	for( int k=0;k<line.size(); ){
+	for( int k=0;k<(int)line.size(); ){
 		rep.resize(0);
 		int *pf=cf;
 		int from=k,c=line[k],sz=line.size();
@@ -850,28 +882,28 @@ void Editor::formatLine( int ln ){
 		if( cf!=pf ) setFormat( pos+from,pos+k,*cf,rep );
 	}
 	if( line[0]=='f' && line.find( "function" )==0 ){
-		for( int k=8;k<line.size();++k ){
+		for( int k=8;k<(int)line.size();++k ){
 			if( isalpha( line[k] ) ){
 				int start=k;
-				for( ++k;k<line.size() && isid(line[k]);++k ){}
+				for( ++k;k<(int)line.size() && isid(line[k]);++k ){}
 				funcList.insert( ln,tline.substr( start,k-start ) );
 				break;
 			}
 		}
 	}else if( line[0]=='t' && line.find( "type" )==0 ){
-		for( int k=4;k<line.size();++k ){
+		for( int k=4;k<(int)line.size();++k ){
 			if( isalpha( line[k] ) ){
 				int start=k;
-				for( ++k;k<line.size() && isid(line[k]);++k ){}
+				for( ++k;k<(int)line.size() && isid(line[k]);++k ){}
 				typeList.insert( ln,tline.substr( start,k-start ) );
 				break;
 			}
 		}
 	}else if( line[0]=='.' ){
-		for( int k=1;k<line.size();++k ){
+		for( int k=1;k<(int)line.size();++k ){
 			if( isalpha( line[k] ) ){
 				int start=k;
-				for( ++k;k<line.size() && isid(line[k]);++k ){}
+				for( ++k;k<(int)line.size() && isid(line[k]);++k ){}
 				labsList.insert( ln,tline.substr( start,k-start ) );
 				break;
 			}

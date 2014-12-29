@@ -258,8 +258,13 @@ int b2dSaveBuffer( B2DBuffer *buff,BBString *file ){
 	if( !buff ) buff=b2dBuffer;
 	buff->debug();
 
-	FILE *f=fopen( file->c_str(),"wb" );
-	if( !f ) return 0;
+	//FILE *f=fopen( file->c_str(),"wb" );
+
+	FILE * f;
+	errno_t err = fopen_s(&f, file->c_str(), "wb");
+
+
+	if( err!=0 ) return 0;
 
 	int w=buff->graphics->width();
 	int h=buff->graphics->height();

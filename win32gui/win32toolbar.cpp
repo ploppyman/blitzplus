@@ -119,7 +119,7 @@ void Win32ToolBar::setTips( BBString *tips ){
 
 	int button=0;
 	int nButtons=p->icons();
-	char *str_p=strdup( tips->c_str() );
+	char *str_p=_strdup( tips->c_str() );
 	const char *str=str_p;
 
 	while( *str ){
@@ -127,7 +127,7 @@ void Win32ToolBar::setTips( BBString *tips ){
 		while( button<nButtons && p->iconIsBlank(button) ) ++button;
 		if( button>=nButtons ) break;
 
-		if( char *p=strchr(str,',') ){
+		if( char *p=(char *)strchr(str,',') ){
 			int sz=p-str;
 			if( sz>255 ) break;
 			memcpy(tip,str,sz);
@@ -136,7 +136,7 @@ void Win32ToolBar::setTips( BBString *tips ){
 		}else{
 			int sz=strlen(str);
 			if( sz>255 ) break;
-			strcpy(tip,str);
+			strcpy_s(tip,str);
 			str+=sz;
 		}
 

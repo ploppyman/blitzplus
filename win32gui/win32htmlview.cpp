@@ -20,6 +20,7 @@ typedef DWebBrowserEvents* DWebBrowserEventsPtr;
 #include <shellapi.h>
 
 #include "win32htmlview.h"
+#include <Mshtml.h>
 
 #define TODO _asm{ int 3 };return E_NOTIMPL;
 
@@ -718,7 +719,7 @@ HRESULT DWebBrowserEventsImpl::BeforeNavigate (_bstr_t URL,long Flags,_bstr_t Ta
 {
 	if( rep->emitNavEvent ){
 		*Cancel=VARIANT_TRUE;
-		rep->seteventurl(URL);
+		rep->seteventurl((unsigned short *)URL.GetAddress());
 		PostMessage( rep->hwnd,WM_USER+100,1,0 );
 	}else{
 		*Cancel=VARIANT_FALSE;
@@ -729,8 +730,8 @@ HRESULT DWebBrowserEventsImpl::BeforeNavigate (_bstr_t URL,long Flags,_bstr_t Ta
 
 HRESULT DWebBrowserEventsImpl::NavigateComplete ( _bstr_t URL ) 
 {
-	rep->seteventurl(URL);
-	rep->setcurrenturl(URL);
+	rep->seteventurl((unsigned short *)URL.GetAddress());
+	rep->setcurrenturl((unsigned short *)URL.GetAddress());
 	PostMessage( rep->hwnd,WM_USER+100,0,0 );
 	return S_OK; 
 }

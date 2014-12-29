@@ -148,7 +148,7 @@ string itoa( int n ){
 	return string( buff );
 }
 
-static int _finite( double n ){		// definition: exponent anything but 2047.
+static int b_finite( double n ){		// definition: exponent anything but 2047.
 
 	int e;					// 11 bit exponent
 	const int eMax = 2047;	// 0x7ff, all bits = 1	
@@ -161,7 +161,7 @@ static int _finite( double n ){		// definition: exponent anything but 2047.
 	return e != eMax;
 }
 
-static int _isnan( double n ){		// definition: exponent 2047, nonzero fraction.
+static int b_isnan( double n ){		// definition: exponent 2047, nonzero fraction.
 
 	int e;					// 11 bit exponent
 	const int eMax = 2047;	// 0x7ff, all bits = 1	
@@ -194,7 +194,7 @@ string ftoa( float n ){
 	string t;
 	int dec, sign;
 
-	if ( _finite( n ) ){
+	if ( b_finite( n ) ){
 
 //		if ( digits < 1 ) digits = 1;	// less than one digit is nonsense
 //		if ( digits > 8 ) digits = 8;	// practical maximum for float
@@ -239,11 +239,12 @@ string ftoa( float n ){
 
 	}	// end of finite case
 
-	if ( _isnan( n ) )	return "NaN";
+	if ( b_isnan( n ) )	return "NaN";
 	if ( n > 0.0 )		return "Infinity";
 	if ( n < 0.0 )		return "-Infinity";
 
 	abort();
+	return NULL;
 }
 
 /*
@@ -285,13 +286,13 @@ string ftoa( float n ){
 
 string tolower( const string &s ){
 	string t=s;
-	for( int k=0;k<t.size();++k ) t[k]=tolower(t[k]);
+	for( int k=0;k<(int)t.size();++k ) t[k]=tolower(t[k]);
 	return t;
 }
 
 string toupper( const string &s ){
 	string t=s;
-	for( int k=0;k<t.size();++k ) t[k]=toupper(t[k]);
+	for( int k=0;k<(int)t.size();++k ) t[k]=toupper(t[k]);
 	return t;
 }
 

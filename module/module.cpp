@@ -127,7 +127,7 @@ void BBModule::debugModules(){
 		char buf[45];
 		memset( buf,' ',44 );
 		memcpy( buf+2,p->_name,strlen(p->_name) );
-		sprintf( buf+34,"%s",st );
+		sprintf_s( buf+34,11,"%s",st );
 
 		buf[strlen(buf)]=' ';
 		buf[0]=buf[43]='*';
@@ -184,7 +184,7 @@ void BBModule::setDriver( const char *subsys,const char *config ){
 	for( int k=0;k<n_configs;++k ){
 		if( strcmp( configs[k].subsys,subsys ) ) continue;
 		if( configs[k].config ) free( configs[k].config );
-		configs[k].config=strdup( config );
+		configs[k].config=_strdup( config );
 		return;
 	}
 //	bbError( "Driver Subsystem '%s' not found",subsys );

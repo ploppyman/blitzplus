@@ -38,15 +38,15 @@ Win32DDScreen::Win32DDScreen(){
 }
 
 void Win32DDScreen::setGamma( int r,int g,int b,int dr,int dg,int db ){
-	_gammaRamp.red[r&255]=dr*257.0f;
-	_gammaRamp.green[g&255]=dg*257.0f;
-	_gammaRamp.blue[b&255]=db*257.0f;
+	_gammaRamp.red[r&255]=(WORD)(dr*257.0f);
+	_gammaRamp.green[g & 255] = (WORD)(dg*257.0f);
+	_gammaRamp.blue[b & 255] = (WORD)(db*257.0f);
 }
 
 void Win32DDScreen::getGamma( int r,int g,int b,int *dr,int *dg,int *db ){
-	*dr=_gammaRamp.red[r&255]/257.0f;
-	*dg=_gammaRamp.green[g&255]/257.0f;
-	*db=_gammaRamp.blue[b&255]/257.0f;
+	*dr = (int)(_gammaRamp.red[r & 255] / 257.0f);
+	*dg = (int)(_gammaRamp.green[g & 255] / 257.0f);
+	*db = (int)(_gammaRamp.blue[b & 255] / 257.0f);
 }
 
 void Win32DDScreen::updateGamma( bool calibrate ){
@@ -110,7 +110,7 @@ int Win32DDScreenDriver::screenModes(){
 }
 
 void Win32DDScreenDriver::enumScreenMode( int n,int *w,int *h,int *fmt ){
-	if( n<0 || n>=_modes.size() ){
+	if( n<0 || n>=(int)_modes.size() ){
 		*w=*h=*fmt=0;
 		return;
 	}

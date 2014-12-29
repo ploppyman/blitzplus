@@ -10,7 +10,7 @@ BBItemArray::~BBItemArray(){
 
 void BBItemArray::clear(){
 	debug();
-	for( int k=0;k<_items.size();++k ) _items[k]->release();
+	for( int k=0;k<(int)_items.size();++k ) _items[k]->release();
 	_items.clear();
 	_selected=-1;
 }

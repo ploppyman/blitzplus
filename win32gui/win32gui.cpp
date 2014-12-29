@@ -280,23 +280,23 @@ BBString *Win32GuiDriver::requestFile( BBString *prompt,BBString *exts,bool save
 			int sz=i-n;
 			if( sz<=0 ) break;
 			BBString *t=exts->substr(n,sz);
-			strcpy( p,t->c_str() );p+=strlen(p);
-			strcpy( p," Files" );p+=strlen(p);*p++=0;
-			strcpy( p,"*." );p+=strlen(p);
-			strcpy( p,t->c_str() );p+=strlen(p);*p++=0;
+			strcpy_s( p,260,t->c_str() );p+=strlen(p);
+			strcpy_s( p,260," Files" );p+=strlen(p);*p++=0;
+			strcpy_s( p,260,"*." );p+=strlen(p);
+			strcpy_s( p,260,t->c_str() );p+=strlen(p);*p++=0;
 			t->release();
 			n=i+1;
 		}
 	}
 	else
 	{
-		strcpy( p,"All files" );p+=strlen(p);*p++=0;
-		strcpy( p,"*.*" );p+=strlen(p);*p++=0;
+		strcpy_s( p,260,"All files" );p+=strlen(p);*p++=0;
+		strcpy_s( p,260,"*.*" );p+=strlen(p);*p++=0;
 	}
 	*p++=0;*p++=0;
 
 	char file[MAX_PATH];
-	strcpy(file,defname->c_str());
+	strcpy_s(file,MAX_PATH,defname->c_str());
 	p=file;while (*p) {if (*p=='/') *p='\\';p++;}
 //	file[0]=0;
 
@@ -311,8 +311,8 @@ BBString *Win32GuiDriver::requestFile( BBString *prompt,BBString *exts,bool save
 		int sz=exts->find( BBString::chr(',') );
 		if( sz==-1 ) sz=exts->size();
 		BBString *t=exts->substr(0,sz );
-		strcpy( defext,t->c_str() );
-		if (!*file) {strcpy( file,"*.");strcat( file,t->c_str() );}
+		strcpy_s( defext,260,t->c_str() );
+		if (!*file) {strcpy_s( file,260,"*.");strcat_s( file,t->c_str() );}
 		t->release();
 		of.lpstrDefExt=defext;
 	}
@@ -409,8 +409,8 @@ struct widgetfactory
 
 	widgetfactory()
 	{
-		sprintf(buffer,"simon=%d",(int)this);
-		putenv(buffer);
+		sprintf_s(buffer,"simon=%d",(int)this);
+		_putenv(buffer);
 	}
 
 	widget *create(int bbgroup,int style,HWND hwnd,LRESULT(*handler)(HWND,UINT,WPARAM,LPARAM,WNDPROC))

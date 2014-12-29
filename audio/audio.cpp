@@ -42,12 +42,12 @@ public:
 	}
 
 	void setVolume( float volume ){
-		def_vol=volume*255.0f;
+		def_vol=(int)(volume*255.0f);
 		defs_valid=false;
 	}
 
 	void setPan( float pan ){
-		def_pan=(pan+1.0f)*127.5f;
+		def_pan=(int)((pan+1.0f)*127.5f);
 		defs_valid=false;
 	}
 
@@ -320,9 +320,9 @@ void	 bbChannelVolume( int channel,float volume ){
 	if( !_ok ) return;
 
 	if( channel>=0 ){
-		FSOUND_SetVolume( channel,volume*255.0f );
+		FSOUND_SetVolume( channel,(int)(volume*255.0f) );
 	}else if( BBMusic *music=_musics[channel&0xfff] ){
-		FMUSIC_SetMasterVolume( music->module(),volume*256.0f );
+		FMUSIC_SetMasterVolume( music->module(),(int)(volume*256.0f) );
 	}
 }
 
@@ -330,7 +330,7 @@ void	 bbChannelPan( int channel,float pan ){
 	if( !_ok ) return;
 
 	if( channel>=0 ){
-		FSOUND_SetPan( channel,(pan+1)*127.5f );
+		FSOUND_SetPan( channel,(int)((pan+1)*127.5f) );
 	}else if( BBMusic *music=_musics[channel&0xfff] ){
 	}
 }

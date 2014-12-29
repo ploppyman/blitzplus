@@ -28,7 +28,7 @@ public:
 	void debug()const{ _debug(this,"Gadget Item List"); }
 	void debug( int index,int off )const{
 		debug();
-		if( index>=0 && index<_items.size()+off ) return;
+		if( index>=0 && index<(int)(_items.size()+off) ) return;
 		bbError( "Gadget item list index out of range" );
 	}
 };

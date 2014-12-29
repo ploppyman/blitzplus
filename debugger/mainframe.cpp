@@ -271,7 +271,11 @@ SourceFile *MainFrame::sourceFile(const char *file){
 		ES_NOHIDESEL|ES_MULTILINE|ES_AUTOHSCROLL|ES_AUTOVSCROLL,
 		CRect( 0,0,0,0 ),&tabber,1 );
 
-	if( FILE *f=fopen( file,"rb" ) ){
+	FILE *f;
+	errno_t err = fopen_s(&f, file, "rb");
+
+
+	if( err!=0 ){
 		fseek( f,0,SEEK_END );
 		int sz=ftell( f );
 		fseek( f,0,SEEK_SET );
@@ -285,8 +289,8 @@ SourceFile *MainFrame::sourceFile(const char *file){
 
 	file_tabs.insert( make_pair(file,tab) );
 
-	if( char *p=strrchr(file,'/') ) file=p+1;
-	if( char *p=strrchr(file,'\\') ) file=p+1;
+	if( char *p=strrchr((char *)file,'/') ) file=p+1;
+	if (char *p = strrchr((char *)file, '\\')) file = p + 1;
 	tabber.insert( tab,t,file );
 
 	tabber.setCurrent( tab );

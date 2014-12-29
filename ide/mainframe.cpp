@@ -163,7 +163,7 @@ int MainFrame::OnCreate( LPCREATESTRUCT lpCreateStruct ){
 	//create recent file list
 	CMenu menu;
 	menu.CreatePopupMenu();
-	for( int k=0;k<prefs.recentFiles.size();++k ){
+	for( int k=0;k<(int)prefs.recentFiles.size();++k ){
 		menu.InsertMenu( k,MF_BYPOSITION|MF_ENABLED,333+k,prefs.recentFiles[k].c_str() );
 	}
 	CMenu *file=GetMenu()->GetSubMenu( 0 );
@@ -265,23 +265,23 @@ Editor *MainFrame::getEditor( int n ){
 	return it==editors.end() ? 0 : it->second;
 }
 
-HtmlHelp *MainFrame::getHelp( int n ){
-	map<CWnd*,HtmlHelp*>::iterator it=helps.find( tabber.getTabWnd( n ) );
+BHtmlHelp *MainFrame::getHelp( int n ){
+	map<CWnd*,BHtmlHelp*>::iterator it=helps.find( tabber.getTabWnd( n ) );
 	return it==helps.end() ? 0 : it->second;
 }
 
-HtmlHelp *MainFrame::getHelp(){
+BHtmlHelp *MainFrame::getHelp(){
 	return getHelp( tabber.getCurrent() );
 }
 
-HtmlHelp *MainFrame::findHelp(){
+BHtmlHelp *MainFrame::findHelp(){
 	int n;
-	HtmlHelp *h;
+	BHtmlHelp *h;
 	for( n=0;n<tabber.size();++n ){
 		if( h=getHelp( n ) ) break;
 	}
 	if( n==tabber.size() ){
-		h=new HtmlHelp( this );
+		h=new BHtmlHelp( this );
 		h->Create( 0,"Help",WS_CHILD|WS_BORDER,CRect( 0,0,0,0 ),&tabber,1 );
 		helps[h]=h;
 		tabber.insert( n,h,"Help" );
@@ -295,7 +295,7 @@ void MainFrame::cursorMoved( Editor *editor ){
 	int row,col;
 	editor->getCursor( &row,&col );
 	char mod=editor->getModified() ? '*' : ' ';
-	char str[64];sprintf( str,"Row:%i Col:%i %c",row,col,mod );
+	char str[64];sprintf_s( str,"Row:%i Col:%i %c",row,col,mod );
 	statusBar.SetPaneText( 1,str );
 }
 
@@ -305,7 +305,7 @@ void MainFrame::currentSet( Tabber *tabber,int index ){
 		if( !t.size() ) t="<untitled>";
 		setTitle( t );
 		cursorMoved( e );
-	}else if( HtmlHelp *h=getHelp() ){
+	}else if( BHtmlHelp *h=getHelp() ){
 		setTitle( h->getTitle() );
 		statusBar.SetPaneText( 1,"" );
 	}else{
@@ -314,12 +314,12 @@ void MainFrame::currentSet( Tabber *tabber,int index ){
 	}
 }
 
-void MainFrame::helpOpen( HtmlHelp *help,const string &file ){
+void MainFrame::helpOpen( BHtmlHelp *help,const string &file ){
 	open( file );
 }
 
-void MainFrame::helpTitleChange( HtmlHelp *help,const string &title ){
-	if( HtmlHelp *h=getHelp() ) setTitle( h->getTitle() );
+void MainFrame::helpTitleChange( BHtmlHelp *help,const string &title ){
+	if( BHtmlHelp *h=getHelp() ) setTitle( h->getTitle() );
 }
 
 void MainFrame::insertRecent( const string &file ){
@@ -345,7 +345,7 @@ void MainFrame::insertRecent( const string &file ){
 			list->InsertMenu( 0,MF_BYPOSITION|MF_ENABLED,333,file.c_str() );
 		}
 		//renumber menu items
-		for( int k=0;k<f.size();++k ){
+		for( int k=0;k<(int)f.size();++k ){
 			list->ModifyMenu( k,MF_BYPOSITION|MF_ENABLED,333+k,f[k].c_str() );
 		}
 	}
@@ -393,11 +393,11 @@ bool MainFrame::open( const string &f ){
 
 		if( file.size() ){
 
-			i_dir=strdup( file.c_str() );
+			i_dir=_strdup( file.c_str() );
 
 		}else if( prefs.recentFiles.size() ){
 
-			i_dir=strdup( getPath( prefs.recentFiles[0] ).c_str() );
+			i_dir=_strdup( getPath( prefs.recentFiles[0] ).c_str() );
 		}
 
 		fd.m_ofn.lpstrInitialDir=i_dir;
@@ -468,7 +468,7 @@ bool MainFrame::close( int n ){
 		e->DestroyWindow();
 		editors.erase( e );
 		delete e;
-	}else if( HtmlHelp *h=getHelp( n ) ){
+	}else if( BHtmlHelp *h=getHelp( n ) ){
 		//tabber.remove( n );
 		//h->DestroyWindow();
 		//helps.erase( h );
@@ -819,23 +819,23 @@ void MainFrame::programDebug(){
 }
 
 void MainFrame::helpHome(){
-	HtmlHelp *h=findHelp();
+	BHtmlHelp *h=findHelp();
 	string t;
 	t="index.html";
 	h->Navigate( (prefs.homeDir+"/help/"+t).c_str() );
 }
 
 void MainFrame::helpAutodoc(){
-	HtmlHelp *h=findHelp();
+	BHtmlHelp *h=findHelp();
 	h->Navigate( (prefs.homeDir+"/help/autodoc.html").c_str() );
 }
 
 void MainFrame::helpBack(){
-	if( HtmlHelp *h=findHelp() ) h->GoBack();
+	if( BHtmlHelp *h=findHelp() ) h->GoBack();
 }
 
 void MainFrame::helpForward(){
-	if( HtmlHelp *h=findHelp() ) h->GoForward();
+	if( BHtmlHelp *h=findHelp() ) h->GoForward();
 }
 
 void MainFrame::helpAbout(){
@@ -872,7 +872,7 @@ void MainFrame::escape(){
 
 void MainFrame::updateCmdUIRange( CCmdUI *ui ){
 	int n=ui->m_nID-333;
-	if( n>=0 && n<prefs.recentFiles.size() ){
+	if( n>=0 && n<(int)prefs.recentFiles.size() ){
 		ui->Enable( true );
 	}else{
 		ui->Enable( false );
@@ -978,7 +978,7 @@ void MainFrame::quick_Help(){
 			AfxMessageBox( ex.c_str(),MB_ICONWARNING );
 			return;
 		}
-		if( HtmlHelp *h=findHelp() ){
+		if( BHtmlHelp *h=findHelp() ){
 			h->Navigate( url.c_str(),0,0 );
 		}
 	}

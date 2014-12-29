@@ -111,7 +111,7 @@ void bbDebugObjects(){
 
 		memset( buf,' ',52 );
 		memcpy( buf+2,tyit->first,strlen(tyit->first) );
-		sprintf( buf+42,"%i",tyit->second );
+		sprintf_s( buf+42,10,"%i",tyit->second );
 
 		buf[strlen(buf)]=' ';
 		buf[0]=buf[51]='*';
@@ -123,7 +123,7 @@ void bbDebugObjects(){
 	bbLogf( "* ------------------------------------------------ *" );
 
 	memset( buf,' ',52 );
-	sprintf( buf,
+	sprintf_s( buf,64,
 		    "* Total Objects                           %i",total );
 	buf[strlen(buf)]=' ';
 	buf[0]=buf[51]='*';

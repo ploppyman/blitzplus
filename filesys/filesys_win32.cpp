@@ -22,7 +22,7 @@ public:
 
 Win32Dir::Win32Dir( BBString *dir ){
 	char buf[MAX_PATH];
-	strncpy( buf,dir->c_str(),MAX_PATH-1 );
+	strncpy_s( buf,dir->c_str(),MAX_PATH-1 );
 	buf[MAX_PATH-1]=0;
 	int sz=strlen(buf);
 	if( sz && buf[sz-1]!='\\' && buf[sz-1]!='/' ) buf[sz++]='\\';

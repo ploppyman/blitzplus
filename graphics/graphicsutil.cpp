@@ -223,16 +223,16 @@ BBGraphics *bbLoadGraphics( BBString *t ){
 
 	const char *file=t->c_str();
 
-	char *ext=strrchr( file,'.' );
+	char *ext=(char *)strrchr( file,'.' );
 	if( !ext ) return 0;
 	++ext;
 
 	FreeImage_Initialise();
 
 	FREE_IMAGE_FORMAT fmt=FIF_BMP;
-	if( !stricmp( ext,"jpg" ) ) fmt=FIF_JPEG;
-	else if( !stricmp( ext,"jpeg" ) ) fmt=FIF_JPEG;
-	else if( !stricmp( ext,"png" ) ) fmt=FIF_PNG;
+	if( !_stricmp( ext,"jpg" ) ) fmt=FIF_JPEG;
+	else if( !_stricmp( ext,"jpeg" ) ) fmt=FIF_JPEG;
+	else if( !_stricmp( ext,"png" ) ) fmt=FIF_PNG;
 	FIBITMAP *t_dib=FreeImage_Load( fmt,file,0 );
 	if( !t_dib ) return 0;
 

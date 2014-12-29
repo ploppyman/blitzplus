@@ -263,7 +263,7 @@ BBString *BBString::fromInt( int n ){
 	return new BBString( buf );
 #else
 	char buf[32];
-	itoa( n,buf,10 );
+	_itoa_s( n,buf,32,10 );
 	return new BBString( buf );
 #endif
 }
@@ -422,10 +422,14 @@ BBString *BBString::fromDouble( double n ){
 	int dec,sign;
 	char buf[64];
 
-	const char *tmp=_ecvt( n,digits,&dec,&sign );
+	//const char *tmp=_ecvt( n,digits,&dec,&sign );
+
+	char * tmp = (char *)malloc(64);
+
+	_ecvt_s(tmp, 64, n, digits, &dec, &sign);
 
 	if( dec<=eNeg+1 || dec>ePos ){
-		_gcvt( n,digits,buf );
+		_gcvt_s( buf,64,n,digits );
 		return new BBString( buf );
 
 	}
