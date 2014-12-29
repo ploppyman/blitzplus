@@ -244,6 +244,7 @@ string ftoa( float n ){
 	if ( n < 0.0 )		return "-Infinity";
 
 	abort();
+	return NULL;
 }
 
 /*
@@ -285,13 +286,13 @@ string ftoa( float n ){
 
 string tolower( const string &s ){
 	string t=s;
-	for( int k=0;k<t.size();++k ) t[k]=tolower(t[k]);
+	for( int k=0;k<(int)t.size();++k ) t[k]=tolower(t[k]);
 	return t;
 }
 
 string toupper( const string &s ){
 	string t=s;
-	for( int k=0;k<t.size();++k ) t[k]=toupper(t[k]);
+	for( int k=0;k<(int)t.size();++k ) t[k]=toupper(t[k]);
 	return t;
 }
 

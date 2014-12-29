@@ -79,13 +79,13 @@ static const char *linkRuntime(){
 		Type *t=Type::void_type;
 		int k;
 		if( !isalpha( s[0] ) ){ start=1;t=typeof( s[0] ); }
-		for( k=1;k<s.size();++k ){
+		for( k=1;k<(int)s.size();++k ){
 			if( !isalnum( s[k] ) && s[k]!='_' ) break;
 		}
 		end=k;
 		DeclSeq *params=d_new DeclSeq();
 		string n=s.substr( start,end-start );
-		while( k<s.size() ){
+		while( k<(int)s.size() ){
 			Type *t=typeof(s[k++]);
 			int from=k;
 			for( ;isalnum(s[k])||s[k]=='_';++k ){}
@@ -104,7 +104,7 @@ static const char *linkRuntime(){
 						int n=atoi( s.substr( from,k-from ) );
 						defType=d_new ConstType( n );
 					}else{
-						float n=atof( s.substr( from,k-from ) );
+						float n =(float)atof((s.substr(from, k - from)));
 						defType=d_new ConstType( n );
 					}
 				}
@@ -227,7 +227,7 @@ static const char *linkUserLibs(){
 	do{
 		if( err=loadUserLib( fd.cFileName ) ){
 			static char buf[64];
-			sprintf( buf,"Error in userlib '%s' - %s",fd.cFileName,err );
+			sprintf_s( buf,"Error in userlib '%s' - %s",fd.cFileName,err );
 			err=buf;break;
 		}
 

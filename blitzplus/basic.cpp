@@ -412,7 +412,7 @@ int _bbReadInt(){
 	switch( dataPtr->fieldType ){
 	case BBTYPE_END:bbError( "Out of data" );return 0;
 	case BBTYPE_INT:return dataPtr++->field.INT;
-	case BBTYPE_FLT:return dataPtr++->field.FLT;
+	case BBTYPE_FLT:return (int)dataPtr++->field.FLT;
 	case BBTYPE_CSTR:
 		t=new BBString( (dataPtr++)->field.CSTR );
 		i=t->toInt();
@@ -428,7 +428,7 @@ float _bbReadFloat(){
 	BBString *t;
 	switch( dataPtr->fieldType ){
 	case BBTYPE_END:bbError( "Out of data" );return 0;
-	case BBTYPE_INT:return dataPtr++->field.INT;
+	case BBTYPE_INT:return (float)dataPtr++->field.INT;
 	case BBTYPE_FLT:return dataPtr++->field.FLT;
 	case BBTYPE_CSTR:
 		t=new BBString( (dataPtr)->field.CSTR );
@@ -468,7 +468,7 @@ float _bbFAbs( float n ){
 }
 
 float _bbFSgn( float n ){
-	return n>0 ? 1 : (n<0 ? -1 : 0);
+	return (float)(n>0 ? 1 : (n<0 ? -1 : 0));
 }
 
 float _bbFMod( float x,float y ){

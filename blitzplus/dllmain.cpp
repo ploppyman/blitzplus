@@ -135,7 +135,7 @@ static int findSym( const string &t ){
 
 static string tolower( const string &t ){
 	string o=t;
-	for( int k=0;k<o.size();++k ) o[k]=tolower(o[k]);
+	for( int k=0;k<(int)o.size();++k ) o[k]=tolower(o[k]);
 	return o;
 }
 
@@ -148,7 +148,7 @@ static void link(){
 			continue;
 		}
 		if( !isalnum(t[0]) ) t=t.substr(1);
-		for( int k=0;k<t.size();++k ){
+		for( int k=0;k<(int)t.size();++k ){
 			if( isalnum(t[k]) || t[k]=='_' ) continue;
 			t=t.substr( 0,k );break;
 		}

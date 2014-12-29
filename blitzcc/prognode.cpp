@@ -69,7 +69,7 @@ void ProgNode::translate( Codegen *g,const vector<UserFunc> &usrfuncs ){
 	//program statements
 	stmts->translate( g );
 
-	for( k=0;k<sem_env->labels.size();++k ){
+	for( k=0;k<(int)sem_env->labels.size();++k ){
 		if( sem_env->labels[k]->def<0 )	ex( "Undefined label '"+sem_env->labels[k]->name+"'",sem_env->labels[k]->ref,stmts->file );
 	}
 
@@ -91,7 +91,7 @@ void ProgNode::translate( Codegen *g,const vector<UserFunc> &usrfuncs ){
 	//lib ptrs
 	g->flush();
 	g->align_data(4);
-	for( k=0;k<usrfuncs.size();++k ){
+	for( k=0;k<(int)usrfuncs.size();++k ){
 		const UserFunc &fn=usrfuncs[k];
 
 		if( !usedfuncs.count(fn.ident) ) continue;
@@ -112,7 +112,7 @@ void ProgNode::translate( Codegen *g,const vector<UserFunc> &usrfuncs ){
 
 		const vector<int> &fns=lf_it->second;
 
-		for( int j=0;j<fns.size();++j ){
+		for( int j=0;j<(int)fns.size();++j ){
 			const UserFunc &fn=usrfuncs[ fns[j] ];
 
 			//proc name
@@ -133,7 +133,7 @@ void ProgNode::translate( Codegen *g,const vector<UserFunc> &usrfuncs ){
 
 	//CONST STRS
 	g->label( "__CSTRS" );
-	for( k=0;k<const_strings.size();++k ){
+	for( k=0;k<(int)const_strings.size();++k ){
 		g->p_data( const_strings[k] );
 	}
 	g->i_data(0);
