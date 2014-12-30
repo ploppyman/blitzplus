@@ -19,15 +19,19 @@ static void procNotFound(){
 
 void _bbLoadLibs( char *p ){
 
-	const char *home=getenv( "blitzpath" );
+	//const char *home=getenv( "blitzpath" );
+
+	char * home;
+	size_t sz;
+	errno_t err = _dupenv_s(&home, &sz, "blitzpath");
 
 	while( *p ){
 		HMODULE mod=LoadLibrary( p );
 		if( !mod && home ){
 			char buff[MAX_PATH];
-			strcpy( buff,home );
-			strcat( buff,"/userlibs/" );
-			strcat( buff,p );
+			strcpy_s( buff,home );
+			strcat_s( buff,"/userlibs/" );
+			strcat_s( buff,p );
 			mod=LoadLibrary( buff );
 		}
 		p+=strlen(p)+1;

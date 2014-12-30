@@ -1,3 +1,37 @@
+Addendum
+
+BlitzPlus VS2010/2013 compatible open source release!
+
+Ide and Debugger require MFC.
+
+You can grab the prebuilt free version of blitzplus from www.blitzbasic.com.
+
+Steps to build:
+
+1) Install freeimage241 into same dir as blitzplus: http://monkeycoder.co.nz/downloads/freeimage241.zip
+
+2) Install fmodapi375win into same dir as blitzplus: http://www.fmod.org/files/public/fmodapi375win.zip
+
+3) Install dplayx.lib, dplay.h and dplobby.h into a folder 'dplay' created into same dir a blitzplus
+
+4) Open blitzplus solution
+ 
+4) Build project 'bblaunch' using config 'Win32 Release'.
+
+5) Build project 'blitzplus' using config 'Win32 Debug'.
+
+6) Output files should end up in _release subdir.
+
+7) Also copy fmodapi375win/api/fmod.dll to _release/bin.
+
+8) Done?
+
+
+
+
+
+
+
 BlitzPlus open source release!
 
 Workspace and project files are in MSVC 6.0 format.

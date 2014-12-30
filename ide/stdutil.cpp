@@ -144,7 +144,7 @@ double atof( const string &s ){
 }
 
 string itoa( int n ){
-	char buff[32];itoa( n,buff,10 );
+	char buff[32];_itoa_s( n,buff,32,10 );
 	return string( buff );
 }
 
@@ -199,11 +199,17 @@ string ftoa( float n ){
 //		if ( digits < 1 ) digits = 1;	// less than one digit is nonsense
 //		if ( digits > 8 ) digits = 8;	// practical maximum for float
 		
-		t = _ecvt( n, digits, &dec, &sign );
+		//t = _ecvt( n, digits, &dec, &sign );
+
+		char * buf = (char *)malloc(50);
+
+		errno_t err = _ecvt_s(buf, 50, n, digits, &dec, &sign);
+		t = buf;
+		free(buf);
 
 		if ( dec <= eNeg + 1 || dec > ePos ){
 
-			_gcvt( n, digits, buffer );
+			_gcvt_s( buffer,50,n, digits );
 			t = buffer;
 			return t;
 		}

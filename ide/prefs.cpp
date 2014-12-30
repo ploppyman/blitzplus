@@ -11,8 +11,14 @@ Prefs prefs;
 
 void Prefs::open(){
 
-	char *p=getenv( "blitzpath" );
-	if( !p ){
+	//char *p=getenv( "blitzpath" );
+
+	char * p;
+	size_t sz;
+
+	errno_t err = _dupenv_s(&p, &sz, "blitzpath");
+
+	if( err!=0 ){
 		AfxMessageBox( "blitzpath environment variable not found!",MB_TOPMOST|MB_SETFOREGROUND|MB_ICONINFORMATION );
 		ExitProcess(0);
 	}
