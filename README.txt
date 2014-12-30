@@ -12,7 +12,7 @@ Steps to build:
 
 2) Install fmodapi375win into same dir as blitzplus: http://www.fmod.org/files/public/fmodapi375win.zip
 
-3) Install dplayx.lib, dplay.h and dplobby.h into a folder 'dplay' created into same dir a blitzplus
+3) Install dplayx.lib, dplay.h and dplobby.h into a folder 'dplay' created into same dir as blitzplus, files may have to be downloaded
 
 4) Open blitzplus solution
  
