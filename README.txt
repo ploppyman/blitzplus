@@ -16,15 +16,15 @@ Steps to build:
 
 4) Open blitzplus solution
  
-4) Build project 'bblaunch' using config 'Win32 Release'.
+5) Build project 'bblaunch' using config 'Win32 Release'.
 
-5) Build project 'blitzplus' using config 'Win32 Debug'.
+6) Build project 'blitzplus' using config 'Win32 Debug'.
 
-6) Output files should end up in _release subdir.
+7) Output files should end up in _release subdir.
 
-7) Also copy fmodapi375win/api/fmod.dll to _release/bin.
+8) Also copy fmodapi375win/api/fmod.dll to _release/bin.
 
-8) Done?
+9) Done?
 
 
 
